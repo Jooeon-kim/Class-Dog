@@ -89,6 +89,9 @@ public class Dog implements Attackers, showInfo {
         this.health += heal;
         alarmHealth();
     }
+    public void setAge(){
+        this.age+=1;
+    }
     private void alarmHealth() {
         for (DogObserver o : observers) {
             o.onHealthChanged(this, health);
@@ -103,6 +106,7 @@ public class Dog implements Attackers, showInfo {
 class Maltese extends Dog {
     Maltese(String name) {
         this.name = name;
+        this.breed = "말티즈";
         this.type = "small";
         this.speed += 1;
         this.attractive += 3;
@@ -111,6 +115,7 @@ class Maltese extends Dog {
 class Pomeranian extends Dog {
     Pomeranian(String name) {
         this.name = name;
+        this.breed = "포메라니안";
         this.type = "small";
         this.speed += 1;
         this.attractive += 3;
@@ -119,6 +124,7 @@ class Pomeranian extends Dog {
 class YorkshireTerrier extends Dog {
     YorkshireTerrier(String name) {
         this.name = name;
+        this.breed = "요크셔테리어";
         this.type = "small";
         this.speed += 1;
         this.attractive += 3;
@@ -127,6 +133,7 @@ class YorkshireTerrier extends Dog {
 class PitBull extends Dog {
     PitBull(String name) {
         this.name = name;
+        this.breed = "핏불";
         this.type = "Medium";
         this.strength += 4;
         this.speed += 1;
@@ -135,6 +142,7 @@ class PitBull extends Dog {
 class BorderCollie extends Dog {
     BorderCollie(String name) {
         this.name = name;
+        this.breed = "보더콜리";
         this.type = "Medium";
         this.strength += 2;
         this.speed += 2;
@@ -144,6 +152,7 @@ class BorderCollie extends Dog {
 class JinDo extends Dog {
     JinDo(String name) {
         this.name = name;
+        this.breed = "진돗개";
         this.type = "Medium";
         this.strength += 2;
         this.speed += 1;
@@ -153,6 +162,7 @@ class JinDo extends Dog {
 class SiberianHusky extends Dog {
     SiberianHusky(String name) {
         this.name = name;
+        this.breed = "시베리안허스키";
         this.type = "Large";
         this.strength += 3;
     }
@@ -160,14 +170,19 @@ class SiberianHusky extends Dog {
 class Samoyed extends Dog {
     Samoyed(String name) {
         this.name = name;
+        this.breed = "사모예드";
         this.type = "Large";
         this.strength += 3;
         this.attractive += 1;
+    }
+    Samoyed(String name,int age){
+
     }
 }
 class GoldenRetriever extends Dog {
     GoldenRetriever(String name) {
         this.name = name;
+        this.breed = "골든리트리버";
         this.type = "Large";
         this.strength += 1;
         this.attractive += 2;
