@@ -17,25 +17,35 @@ public class Dog implements Attackers, showInfo {
     int strength = 1;
     int attractive = 1;
     int intelligence = 1;
-    int loyalty = 50;
+    int loyalty = 20;
     //속성값+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
     Random random = new Random();
     Scanner sc = new Scanner(System.in);
 
     public void info() {
         System.out.println("이름:" + this.name + "종류:" + this.breed);
+        System.out.println("타입: "+this.type);
+        System.out.println("체력: "+this.health);
+        System.out.println("나이: "+this.age+"살");
+        System.out.println("애정: "+this.loyalty);
+        System.out.println("귀여움: "+this.attractive);
+        System.out.println("지능: "+this.intelligence);
     }
+
     //동작 함수 ****************************************************************************
     void bark() {
         System.out.println("개소리");
     }
+
     public int attack() {
         return random.nextInt(this.strength);
     }
+
     public void hit(int damage) {
         this.health -= (damage - random.nextInt(this.strength));
         alarmHealth();
     }
+
     public void trySkills() {
         if (this.intelligence > 5 && this.loyalty > 70)
             sitDown();
@@ -50,27 +60,35 @@ public class Dog implements Attackers, showInfo {
         if (this.intelligence > 100 && this.loyalty > 100)
             javaCoding();
     }
+
     public void sitDown() {
         System.out.println(this.name + "가 앉았다");
     }
+
     public void giveHand() {
         System.out.println(this.name + "가 앞발을 줬다");
     }
+
     public void waitMoment() {
         System.out.println(this.name + "가 기다린다");
     }
+
     public void turnAround() {
         System.out.println(this.name + "가 한바퀴 돌았다");
     }
+
     public void bang() {
         System.out.println(this.name + "가 총맞은척 한다");
     }
+
     public void javaCoding() {
         System.out.println(this.name + "가 자바 코딩을 대신 해준다");
     }
+
     public Dog EnterField() {
         return this;
     }
+
     public void increaseLoyalty(int heart) {
         this.loyalty += heart;
         if (this.loyalty > 100) {
@@ -78,6 +96,7 @@ public class Dog implements Attackers, showInfo {
         }
         alarmLoyalty();
     }
+
     public void decreaseLoyalty(int decrease) {
         this.loyalty -= decrease;
         if (this.loyalty < 0) {
@@ -85,24 +104,29 @@ public class Dog implements Attackers, showInfo {
         }
         alarmLoyalty();
     }
+
     public void increaseHealth(int heal) {
         this.health += heal;
         alarmHealth();
     }
-    public void setAge(){
-        this.age+=1;
+
+    public void setAge() {
+        this.age += 1;
     }
+
     private void alarmHealth() {
         for (DogObserver o : observers) {
             o.onHealthChanged(this, health);
         }
     }
+
     private void alarmLoyalty() {
         for (DogObserver o : observers) {
             o.onLoyaltyChanged(this, loyalty);
         }
     }
 }
+
 class Maltese extends Dog {
     Maltese(String name) {
         this.name = name;
@@ -112,6 +136,7 @@ class Maltese extends Dog {
         this.attractive += 3;
     }
 }
+
 class Pomeranian extends Dog {
     Pomeranian(String name) {
         this.name = name;
@@ -121,6 +146,7 @@ class Pomeranian extends Dog {
         this.attractive += 3;
     }
 }
+
 class YorkshireTerrier extends Dog {
     YorkshireTerrier(String name) {
         this.name = name;
@@ -130,6 +156,7 @@ class YorkshireTerrier extends Dog {
         this.attractive += 3;
     }
 }
+
 class PitBull extends Dog {
     PitBull(String name) {
         this.name = name;
@@ -139,6 +166,7 @@ class PitBull extends Dog {
         this.speed += 1;
     }
 }
+
 class BorderCollie extends Dog {
     BorderCollie(String name) {
         this.name = name;
@@ -149,6 +177,7 @@ class BorderCollie extends Dog {
         this.intelligence += 3;
     }
 }
+
 class JinDo extends Dog {
     JinDo(String name) {
         this.name = name;
@@ -159,6 +188,7 @@ class JinDo extends Dog {
         this.loyalty += 30;
     }
 }
+
 class SiberianHusky extends Dog {
     SiberianHusky(String name) {
         this.name = name;
@@ -167,6 +197,7 @@ class SiberianHusky extends Dog {
         this.strength += 3;
     }
 }
+
 class Samoyed extends Dog {
     Samoyed(String name) {
         this.name = name;
@@ -175,10 +206,12 @@ class Samoyed extends Dog {
         this.strength += 3;
         this.attractive += 1;
     }
-    Samoyed(String name,int age){
+
+    Samoyed(String name, int age) {
 
     }
 }
+
 class GoldenRetriever extends Dog {
     GoldenRetriever(String name) {
         this.name = name;
@@ -190,3 +223,28 @@ class GoldenRetriever extends Dog {
     }
 }
 
+class DogFactory {
+    static Scanner sc = new Scanner(System.in);
+
+    static Dog Maker() {
+        System.out.print("이름을 입력하세요: ");
+        String name = sc.next();
+        while (true) {
+            System.out.println("종을 입력하세요: ");
+            String breed = sc.next();
+            switch (breed) {
+                case "시베리안허스키":
+                    return new SiberianHusky(name);
+                case "사모예드":
+                    return new Samoyed(name);
+                case "골든리트리버":
+                    return new GoldenRetriever(name);
+                case "말티즈":
+                    return new Maltese(name);
+                default:
+                    System.out.println("해당 종이 존재하지 않습니다");
+                    break;
+            }
+        }
+    }
+}

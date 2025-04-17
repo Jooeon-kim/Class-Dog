@@ -4,12 +4,20 @@ import java.util.Scanner;
 public class Owner implements DogObserver,showInfo{
     String name;
     int age;
-    Dog [] dogs;
+    Dog [] dogs = new Dog [1];
     int championCount;
     Random random = new Random();
-    Owner(String name,int age){
+    Owner(String name){
         this.name = name;
-        this.age = age;
+        this.age = 20;
+    }
+    public void setDog(Dog dog){
+        this.dogs [0] = dog;
+    }
+    public void showDogInfo(){
+        for(Dog d : dogs){
+           d.info();
+        }
     }
     public void info(){
         System.out.println("이름: "+this.name+" 나이: "+this.age+" 트로피 갯수: "+this.championCount);
