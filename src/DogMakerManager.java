@@ -5,11 +5,8 @@ public class DogMakerManager {
     static Scanner sc = new Scanner(System.in);
 
     void run() {
-        if(currentUser.dog==null){
-            run();
-            return;
-        }
-        System.out.print("유저로그인 :");
+
+        System.out.print("유저이름 :");
         String name = sc.next();
 
         Owner user = new Owner(name);
@@ -26,10 +23,11 @@ public class DogMakerManager {
         do {
             System.out.println("""
                     ++++++++++++
-                    1.유저정보보기
-                    2.개 정보보기
-                    3.이번달 스케줄 실행
-                    4.개 재롱시키기
+                    1.🙍‍♀️🙍‍♂️유저정보보기
+                    2.🐾개 정보보기
+                    3.📆이번달 스케줄 실행
+                    4.🐕개 재롱시키기
+                    5.🏆보유 트로피 정보 보기
                     ++++++++++++
                     """);
             int select = sc.nextInt();
@@ -45,6 +43,9 @@ public class DogMakerManager {
                     break;
                 case 4:
                     currentUser.dog.trySkills();
+                    break;
+                case 5:
+                    currentUser.championCupInfo();
                     break;
                 default:
                     System.out.println("다시 입력하세요");

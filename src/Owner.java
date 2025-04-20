@@ -10,6 +10,7 @@ public class Owner implements DogObserver,showInfo{
     Dog dog;
     ArrayList<Dog> supportDogs = new ArrayList<>();
     int championCount;
+    ArrayList <String> championCup = new ArrayList<>();
     int money = 1000;
     Random random = new Random();
     Owner(String name){
@@ -36,6 +37,12 @@ public class Owner implements DogObserver,showInfo{
         System.out.println("이름: "+this.name+" 나이: "+this.age+" 트로피 갯수: "+this.championCount+"\n"+
                 "보유 돈: "+this.money);
     }
+    public void championCupInfo(){
+        System.out.println("🏆우승 목록 정보🏆");
+        for(String c : championCup){
+            System.out.println(c);
+        }
+    }
     public void walkWithDog(){
         System.out.println(this.dog.name+"(와)과 산책을 합니다");
         int giveJoy = random.nextInt(10);
@@ -49,8 +56,8 @@ public class Owner implements DogObserver,showInfo{
         System.out.println(" 남은돈: "+this.money);
     }
     public void getRest(){
-        this.dog.increaseHealth(10);
-        System.out.println("휴식을 취했습니다. 개의 체력 업");
+        this.dog.recover();
+        System.out.println(dog.name+"(이)가 휴식을 취했습니다.");
     }
     public void lostDog(){
         this.dog = null;
