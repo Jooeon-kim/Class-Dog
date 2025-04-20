@@ -13,6 +13,7 @@ public class Dog implements Attackers, showInfo {
     int age = 0;
     String breed;
     int health = 10;
+    int maxHealth = 10;
     int speed = 1;
     int strength = 1;
     int attractive = 1;
@@ -21,15 +22,23 @@ public class Dog implements Attackers, showInfo {
     //속성값+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
     Random random = new Random();
     Scanner sc = new Scanner(System.in);
-
+    Owner owner;
     public void info() {
-        System.out.println("이름:" + this.name + "종류:" + this.breed);
-        System.out.println("타입: "+this.type);
-        System.out.println("체력: "+this.health);
-        System.out.println("나이: "+this.age+"살");
-        System.out.println("애정: "+this.loyalty);
-        System.out.println("귀여움: "+this.attractive);
-        System.out.println("지능: "+this.intelligence);
+        System.out.println(
+                        "___________________________________"+"\n"+
+                        "이름: " + this.name + "\n" +
+                        "종류: " + this.breed + "\n" +
+                        "타입: " + this.type + "\n" +
+                        "나이: " + this.age + "살\n" +
+                        "체력: " + this.health + "\n" +
+                        "힘: " + this.strength + "\n" +
+                        "스피드: " + this.speed + "\n" +
+                        "귀여움: " + this.attractive + "\n" +
+                        "지능: " + this.intelligence + "\n" +
+                        "애정: " + this.loyalty+"\n"+
+                        "___________________________________"
+        );
+
     }
 
     //동작 함수 ****************************************************************************
@@ -38,27 +47,33 @@ public class Dog implements Attackers, showInfo {
     }
 
     public int attack() {
-        return random.nextInt(this.strength);
+        int damage = random.nextInt(this.strength);
+        System.out.println(this.name+"(이)가"+damage+"만큼의 데미지를 주었습니다" );
+        return damage;
     }
 
     public void hit(int damage) {
-        this.health -= (damage - random.nextInt(this.strength));
-        alarmHealth();
+        decreaseHealth(damage-random.nextInt(damage)+1);
     }
 
     public void trySkills() {
-        if (this.intelligence > 5 && this.loyalty > 70)
-            sitDown();
-        if (this.intelligence > 15 && this.loyalty > 70) {
+        if (this.intelligence > 5 && this.loyalty > 30){
+            sitDown();}
+        else{
+            System.out.println("아무일도 일어나지 않았습니다. 지능이 낮거나 애정이 낮습니다");
+        }
+
+        if (this.intelligence > 15 && this.loyalty > 40) {
             giveHand();
             waitMoment();
         }
-        if (this.intelligence > 25 && this.loyalty > 70) {
+        if (this.intelligence > 25 && this.loyalty > 50) {
             turnAround();
             bang();
         }
         if (this.intelligence > 100 && this.loyalty > 100)
             javaCoding();
+
     }
 
     public void sitDown() {
@@ -88,7 +103,9 @@ public class Dog implements Attackers, showInfo {
     public Dog EnterField() {
         return this;
     }
-
+    void setOwner(Owner owner){
+        this.owner = owner;
+    }
     public void increaseLoyalty(int heart) {
         this.loyalty += heart;
         if (this.loyalty > 100) {
@@ -101,12 +118,26 @@ public class Dog implements Attackers, showInfo {
         this.loyalty -= decrease;
         if (this.loyalty < 0) {
             this.loyalty = 0;
+            System.out.println("충성도가 0이 되었습니다");
+            this.owner.lostDog();
         }
         alarmLoyalty();
     }
 
     public void increaseHealth(int heal) {
         this.health += heal;
+        if(this.health>this.maxHealth){
+            this.health = maxHealth;
+        }
+        alarmHealth();
+    }
+    public void decreaseHealth(int damage){
+        this.health -=damage;
+        if(this.health<0){
+            this.health=0;
+            System.out.println("개의 체력이 다했습니다. 충성도 감소!");
+            decreaseLoyalty(10);
+        }
         alarmHealth();
     }
 
@@ -125,7 +156,15 @@ public class Dog implements Attackers, showInfo {
             o.onLoyaltyChanged(this, loyalty);
         }
     }
+    public void addObserver(DogObserver observer) {
+        observers.add(observer);
+    }
+
+    public void removeObserver(DogObserver observer) {
+        observers.remove(observer);
+    }
 }
+
 
 class Maltese extends Dog {
     Maltese(String name) {
@@ -206,10 +245,6 @@ class Samoyed extends Dog {
         this.strength += 3;
         this.attractive += 1;
     }
-
-    Samoyed(String name, int age) {
-
-    }
 }
 
 class GoldenRetriever extends Dog {
@@ -241,10 +276,21 @@ class DogFactory {
                     return new GoldenRetriever(name);
                 case "말티즈":
                     return new Maltese(name);
+                case "포메라니안":
+                    return new Pomeranian(name);
+                case "요크셔테리어":
+                    return new YorkshireTerrier(name);
+                case "핏불":
+                    return new PitBull(name);
+                case "보더콜리":
+                    return new BorderCollie(name);
+                case "진돗개":
+                    return new JinDo(name);
                 default:
                     System.out.println("해당 종이 존재하지 않습니다");
                     break;
             }
+
         }
     }
 }
