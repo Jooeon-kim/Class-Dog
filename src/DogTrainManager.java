@@ -4,6 +4,7 @@ import java.util.Scanner;
 public class DogTrainManager {
     Random random = new Random();
     Scanner sc = new Scanner(System.in);
+    Owner owner;
 void trainDog(Dog dog){
         System.out.println("훈련시킬 종목을 선택하세요");
         System.out.println("------------------------------------------------------");
@@ -23,6 +24,7 @@ void trainDog(Dog dog){
                 int plusHealth = random.nextInt(10);
                 dog.maxHealth+=plusHealth;
                 System.out.println("최대체력증가! : "+plusHealth);
+                dog.recover();
                 break;
             case 2:
                 int plusSpeed = random.nextInt(10);
@@ -88,12 +90,21 @@ void trainDog(Dog dog){
                 user.visitPetHairShop();
                 break;
             case 3:
+                DogWorkPlace DWP = new DogWorkPlace();
+                DWP.setOwner(owner);
+                DWP.chooseWorkplace();
                 break;
             case 4:
+                BackStreet BS = new BackStreet();
+                BS.setOwner(owner);
+                BS.EnterBackStreet();
                 break;
             case 5:
                 user.getRest();
                 break;
         }
+    }
+    void setOwner(Owner owner){
+        this.owner = owner;
     }
 }

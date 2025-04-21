@@ -11,6 +11,7 @@ public class Owner implements DogObserver,showInfo{
     ArrayList<Dog> supportDogs = new ArrayList<>();
     int championCount;
     ArrayList <String> championCup = new ArrayList<>();
+    ArrayList <String> killedCats = new ArrayList<>();
     int money = 1000;
     Random random = new Random();
     Owner(String name){
@@ -58,6 +59,12 @@ public class Owner implements DogObserver,showInfo{
     public void getRest(){
         this.dog.recover();
         System.out.println(dog.name+"(이)가 휴식을 취했습니다.");
+    }
+    public void showHuntedList(){
+        System.out.println("잡은 고양이 리스트");
+        for(String a : killedCats){
+            System.out.println(a);
+        }
     }
     public void lostDog(){
         this.dog = null;

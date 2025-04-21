@@ -28,6 +28,7 @@ public class DogMakerManager {
                     3.📆이번달 스케줄 실행
                     4.🐕개 재롱시키기
                     5.🏆보유 트로피 정보 보기
+                    6.🙀사냥한 고양이 리스트 보기
                     ++++++++++++
                     """);
             int select = sc.nextInt();
@@ -46,6 +47,9 @@ public class DogMakerManager {
                     break;
                 case 5:
                     currentUser.championCupInfo();
+                    break;
+                case 6:
+                    currentUser.showHuntedList();
                     break;
                 default:
                     System.out.println("다시 입력하세요");

@@ -71,6 +71,7 @@ public class DogChampionship {
                 champion = BM.DogFightAuto(round2Winner1, round2Winner2);
             }
             System.out.println("🏆DFC 최종우승자🏆: " + champion.name + "(" + champion.breed + ")" + "이(가) 챔피언입니다🐕‍🦺!!!!!!!!");
+            playerDog.recover();
             if (champion == playerDog) {
                 System.out.println("플레이어가 DFC 에서 우승하여 트로피가 추가되었습니다!");
                 owner.championCount++;

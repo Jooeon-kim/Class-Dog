@@ -63,6 +63,7 @@ public class DateEventManager {
         do {
             showDate();
             System.out.println(this.week + "주차 훈련을 선택하세요");
+            TM.setOwner(this.currentUser);
             TM.trainDog(this.currentUser.dog);
             this.week++;
         } while (this.week != 5);

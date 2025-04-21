@@ -307,7 +307,7 @@ class DogFactory {
         Dog dog = new Dog();
         dog.name=name1array[random.nextInt(name1array.length)]+name2array[random.nextInt(name2array.length)];
         dog.breed = dogBreeds[random.nextInt(dogBreeds.length)];
-        int health =Math.max(1, userDog.health + random.nextInt(16) - 10);
+        int health =Math.max(1, userDog.maxHealth+ random.nextInt(16) - 10);
         dog.health = health;
         dog.maxHealth = health;
         dog.speed = Math.max(1, userDog.speed + random.nextInt(16) - 10);
