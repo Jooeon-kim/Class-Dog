@@ -307,13 +307,13 @@ class DogFactory {
         Dog dog = new Dog();
         dog.name=name1array[random.nextInt(name1array.length)]+name2array[random.nextInt(name2array.length)];
         dog.breed = dogBreeds[random.nextInt(dogBreeds.length)];
-        int health =Math.max(1, userDog.maxHealth+ random.nextInt(16) - 10);
+        int health = Math.max(1, userDog.maxHealth+ random.nextInt(15)-10);
         dog.health = health;
         dog.maxHealth = health;
-        dog.speed = Math.max(1, userDog.speed + random.nextInt(16) - 10);
-        dog.strength = Math.max(1, userDog.strength + random.nextInt(16) - 10);
-        dog.attractive = Math.max(1, userDog.attractive + random.nextInt(16) - 10);
-        dog.intelligence = Math.max(1, userDog.intelligence + random.nextInt(16) - 10);
+        dog.speed = Math.max(1, userDog.speed + random.nextInt(15)-10);
+        dog.strength = Math.max(1, userDog.strength + random.nextInt(15)-8);
+        dog.attractive = Math.max(1, userDog.attractive + random.nextInt(15)-10);
+        dog.intelligence = Math.max(1, userDog.intelligence + random.nextInt(15)-10);
         dog.loyalty = 100;
         return dog;
     }

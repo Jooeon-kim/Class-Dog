@@ -122,6 +122,10 @@ public class DogChampionship {
                 owner.championCup.add(DM.year + "/" + DM.month + "/" + DM.week + "주차 DogShow 우승자🏆" + playerDog.name);
                 System.out.println("상금획득");
                 owner.money += 3000;
+                if(owner.championCount==5){
+                    System.out.println("지역리그 5회 우승으로 세계선수권 대회 참가권을 얻었습니다!");
+                    owner.WorldChampionShipChallengeTicket+=1;
+                }
             }
             System.out.println("🏆DogShow 종료🏆!" + DogShowChampion.name + "("+DogShowChampion.breed+")"+" 우승!🙌");
 

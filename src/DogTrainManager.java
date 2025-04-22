@@ -21,18 +21,18 @@ void trainDog(Dog dog){
     int rnNumber = 0;
     switch(select){
             case 1:
-                int plusHealth = random.nextInt(10);
+                int plusHealth = random.nextInt(10)+1;
                 dog.maxHealth+=plusHealth;
                 System.out.println("최대체력증가! : "+plusHealth);
                 dog.recover();
                 break;
             case 2:
-                int plusSpeed = random.nextInt(10);
+                int plusSpeed = random.nextInt(10)+1;
                 dog.speed+=plusSpeed;
                 System.out.println("스피드 증가! : "+plusSpeed);
                 break;
             case 3:
-                int plusStrength = random.nextInt(10);
+                int plusStrength = random.nextInt(10)+1;
                 dog.strength+=plusStrength;
                 System.out.println("근력 증가! : "+plusStrength);
                 break;
@@ -49,12 +49,12 @@ void trainDog(Dog dog){
                 }
                 break;
             case 5:
-                int plusAttractive=random.nextInt(10);
+                int plusAttractive=random.nextInt(10)+1;
                 dog.attractive+=plusAttractive;
                 System.out.println("귀여움 증가! : "+plusAttractive);
                 break;
             case 6:
-                int plusIntelligence=random.nextInt(10);
+                int plusIntelligence=random.nextInt(10)+1;
                 dog.intelligence+=plusIntelligence;
                 System.out.println("지능 증가! : "+plusIntelligence);
                 break;
@@ -66,7 +66,7 @@ void trainDog(Dog dog){
                     dog.maxHealth+=5;
                     System.out.println("힘증가 10 스피드 증가 10 체력 증가 5");
                 }else{
-                    dog.decreaseLoyalty(10);
+                    dog.decreaseLoyalty(5);
                 }
                 break;
         }

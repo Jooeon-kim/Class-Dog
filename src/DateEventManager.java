@@ -20,6 +20,14 @@ public class DateEventManager {
             this.currentUser.dog.age++;
             this.year++;
             this.month = 1;
+            if(currentUser.WorldChampionShipChallengeTicket>0){
+                System.out.println("세계선수권에 도전하시겠습니까? 1.예 2.아니요" );
+                int select = sc.nextInt();
+                if(select==1)
+                    System.out.println("업데이트중");
+                else
+                    System.out.println("취소");
+            }
         }
             if(month%3==0 && month!=0){
             showDate();
@@ -50,7 +58,7 @@ public class DateEventManager {
                     DC.RacerChampionShip(currentUser.dog, false);
                     DC.DogShowChampionShip(currentUser.dog, true);
                     break;
-                default:
+                case 4:
                     System.out.println("이번 시즌은 포기했습니다");
                     DC.FighterChampionship(currentUser.dog, false);
                     DC.RacerChampionShip(currentUser.dog, false);

@@ -12,16 +12,21 @@ public class BackStreet {
     }
     void EnterBackStreet(){
         System.out.println("뒷골목에 들어왔습니다...");
-        int roll = random.nextInt(3);
+        int roll = random.nextInt(2);
         switch (roll){
             case 0:
                 FindCat();
                 break;
             case 1:
-                Lucky();
-                break;
-            case 2:
-                NothingFind();
+                int roll2 = random.nextInt(2);
+                switch (roll2){
+                    case 0:
+                        NothingFind();
+                        break;
+                    case 1:
+                        Lucky();
+                        break;
+                }
                 break;
             default:
         }

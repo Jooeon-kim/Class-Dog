@@ -9,7 +9,8 @@ public class Owner implements DogObserver,showInfo{
     int age;
     Dog dog;
     ArrayList<Dog> supportDogs = new ArrayList<>();
-    int championCount;
+    int championCount=0;
+    int WorldChampionShipChallengeTicket =0;
     ArrayList <String> championCup = new ArrayList<>();
     ArrayList <String> killedCats = new ArrayList<>();
     int money = 1000;
@@ -36,7 +37,7 @@ public class Owner implements DogObserver,showInfo{
     }
     public void info(){
         System.out.println("이름: "+this.name+" 나이: "+this.age+" 트로피 갯수: "+this.championCount+"\n"+
-                "보유 돈: "+this.money);
+                "보유 돈: "+this.money +"\t"+"세계선수권 도전 티켓: "+this.WorldChampionShipChallengeTicket);
     }
     public void championCupInfo(){
         System.out.println("🏆우승 목록 정보🏆");
@@ -46,7 +47,7 @@ public class Owner implements DogObserver,showInfo{
     }
     public void walkWithDog(){
         System.out.println(this.dog.name+"(와)과 산책을 합니다");
-        int giveJoy = random.nextInt(10);
+        int giveJoy = random.nextInt(10)+10;
         this.dog.increaseLoyalty(giveJoy);
     }
     public void visitPetHairShop(){
@@ -61,7 +62,7 @@ public class Owner implements DogObserver,showInfo{
         System.out.println(dog.name+"(이)가 휴식을 취했습니다.");
     }
     public void showHuntedList(){
-        System.out.println("잡은 고양이 리스트");
+        System.out.println("🐱잡은 고양이 리스트🤩");
         for(String a : killedCats){
             System.out.println(a);
         }

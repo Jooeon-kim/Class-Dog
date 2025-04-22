@@ -39,9 +39,10 @@ class CatFactory{
     Random random = new Random();
 
     Cat RandomCat(Dog userDog){
-        String [] names = {"더러운","못생긴","검은","버림받은","상처있는","냄새나는","멍청한","뚱뚱한"};
-        String [] breeds = {" 길고양이"," 샴"," 러시안블루"," 페르시안"," 노르웨이숲"," 먼치킨"};
-        String randomName = names[random.nextInt(5)]+breeds[random.nextInt(7)];
+        String [] names1 = {"더러운","못생긴","검은","버림받은","상처있는","냄새나는","멍청한","뚱뚱한"};
+        String[] name2 = {" 쥐잡이", " 바닥긁개", " 구석냥", " 츄르구걸꾼", " 발톱폭군", " 털폭탄", " 똥발견자", " 창틀점령자", " 간식사냥꾼", " 벽지긁개"};
+        String [] breeds = {"길고양이","샴","러시안블루","페르시안","노르웨이숲","먼치킨"};
+        String randomName = names1[random.nextInt(5)]+name2[random.nextInt(10)];
         Cat cat = new Cat(breeds[random.nextInt(7)],randomName );
         cat.health=userDog.health+random.nextInt(5)-20;
         cat.speed= userDog.speed+ random.nextInt(5)+1;
